@@ -784,17 +784,53 @@ body {
 
 /* Add spacing between photo counter and social icons */
 .carousel-container + .social-icons {
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 @media (max-width: 768px) {
     .carousel-container {
         margin: 20px auto;
+        padding-bottom: 80px;  /* Reduced padding to bring social icons closer */
+    }
+
+    .carousel-items {
+        margin-bottom: 60px;
     }
 
     .carousel-button {
         width: 35px;
         height: 35px;
         font-size: 1em;
+        top: auto;
+        bottom: -50px;
+        transform: none;
+    }
+
+    .carousel-button.prev {
+        left: 30%;
+    }
+
+    .carousel-button.next {
+        right: 30%;
+    }
+
+    .photo-counter {
+        bottom: -90px;
+    }
+
+    /* Space between counter and social icons is controlled by container padding */
+    .carousel-container + .social-icons {
+        margin-top: 0;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+    .carousel-button.prev {
+        left: 25%;
+    }
+
+    .carousel-button.next {
+        right: 25%;
     }
 }
