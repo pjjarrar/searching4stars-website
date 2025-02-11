@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Searching 4 Stars - Bookings and Inquiries">
+    <meta property="og:title" content="Contact - Searching 4 Stars">
+    <meta property="og:description" content="Get in touch with Searching 4 Stars">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://searching4stars.com/contact">
+    <title>Contact - Searching 4 Stars</title>
+    <link rel="icon" type="image/gif" href="images/globe.gif">
+    <link rel="alternate icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="loading-screen">
+        <img src="images/globe.gif" alt="Loading..." class="loading-globe">
+    </div>
+    <div class="retro-globe">
+        <img src="images/globe.gif" alt="Retro Globe">
+    </div>
+    <div class="content-wrapper">
+        <nav class="navbar">
+            <button class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://linktr.ee/searching4stars">Music</a></li>
+                <li><a href="tour.html">Tour</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-container">
+            <img src="images/logo.png" alt="Band Logo" class="logo">
+            <div class="contact-box">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <p>For bookings and inquiries:</p>
+                    <p>Email: <a href="mailto:searchingfourstars@gmail.com">searchingfourstars@gmail.com</a></p>
+                    <p>Management: The Band</p>
+                    <p>Location: Houston, TX</p>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@searching.4.stars" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/searchingfourstars?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Searchingfourstars" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/artist/2uTEzlGtXNmJvD7lOkIFkM?si=SLpp8UAbQ_O-lmKwOZc-wA" class="social-icon"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </div>
+    <footer class="retro-footer">
+        <p>&copy; 2025 Searching 4 Stars</p>
+    </footer>
+    <script>
+        // Same JavaScript as index.html for the hamburger menu
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+        
+        hamburger.addEventListener('click', function() {
+            navbar.classList.toggle('active');
+            
+            if (navbar.classList.contains('active')) {
+                this.style.border = '2px inset #808080';
+                this.style.backgroundColor = '#a0a0a0';
+            } else {
+                this.style.border = '2px outset #ffffff';
+                this.style.backgroundColor = '#c0c0c0';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!navbar.contains(event.target) && navbar.classList.contains('active')) {
+                navbar.classList.remove('active');
+                hamburger.style.border = '2px outset #ffffff';
+                hamburger.style.backgroundColor = '#c0c0c0';
+            }
+        });
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.classList.add('fade-out');
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photo Gallery - Searching 4 Stars">
+    <meta property="og:title" content="Photos - Searching 4 Stars">
+    <meta property="og:description" content="Check out photos of Searching 4 Stars">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://searching4stars.com/photos">
+    <title>Photos - Searching 4 Stars</title>
+    <link rel="icon" type="image/gif" href="images/globe.gif">
+    <link rel="alternate icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="loading-screen">
+        <img src="images/globe.gif" alt="Loading..." class="loading-globe">
+    </div>
+    <div class="retro-globe">
+        <img src="images/globe.gif" alt="Retro Globe">
+    </div>
+    <div class="content-wrapper">
+        <nav class="navbar">
+            <button class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://linktr.ee/searching4stars">Music</a></li>
+                <li><a href="tour.html">Tour</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-container">
+            <img src="images/logo.png" alt="Searching 4 Stars Band Logo" class="logo">
+            
+            <div class="carousel-container">
+                <div class="carousel">
+                    <button class="carousel-button prev" onclick="rotateCarousel('prev')">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-button next" onclick="rotateCarousel('next')">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-items">
+                        <!-- Images will be added here via JavaScript -->
+                    </div>
+                    <div class="photo-counter">Photo 1 of 10</div>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@searching.4.stars" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/searchingfourstars?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Searchingfourstars" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/artist/2uTEzlGtXNmJvD7lOkIFkM?si=SLpp8UAbQ_O-lmKwOZc-wA" class="social-icon"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </div>
+    <footer class="retro-footer">
+        <p>&copy; 2024 Searching 4 Stars</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                This website uses cookies to ensure you get the best experience on our website.
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
+                <button class="cookie-btn" onclick="declineCookies()">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+        
+        hamburger.addEventListener('click', function() {
+            navbar.classList.toggle('active');
+            
+            if (navbar.classList.contains('active')) {
+                this.style.border = '2px inset #808080';
+                this.style.backgroundColor = '#a0a0a0';
+            } else {
+                this.style.border = '2px outset #ffffff';
+                this.style.backgroundColor = '#c0c0c0';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!navbar.contains(event.target) && navbar.classList.contains('active')) {
+                navbar.classList.remove('active');
+                hamburger.style.border = '2px outset #ffffff';
+                hamburger.style.backgroundColor = '#c0c0c0';
+            }
+        });
+
+        // Cookie consent functionality
+        function checkCookieConsent() {
+            if (localStorage.getItem('cookieConsent') === null) {
+                document.getElementById('cookieBanner').style.display = 'block';
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        // Check cookie consent on page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                checkCookieConsent();
+            }, 2000);
+        });
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.classList.add('fade-out');
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Carousel functionality
+        const images = [
+            'images/pictures/picture1.jpg',
+            'images/pictures/picture2.jpg',
+            'images/pictures/picture3.jpg',
+            'images/pictures/picture4.jpg',
+            'images/pictures/picture5.jpg',
+            'images/pictures/picture6.jpg',
+            'images/pictures/picture7.jpg',
+            'images/pictures/picture8.jpg',
+            'images/pictures/picture9.jpg',
+            'images/pictures/picture10.jpg'
+        ];
+
+        const carouselItems = document.querySelector('.carousel-items');
+        const photoCounter = document.querySelector('.photo-counter');
+        let currentIndex = 0;
+
+        // Create carousel items
+        images.forEach((image, index) => {
+            const item = document.createElement('div');
+            item.className = 'carousel-item';
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = `Band Photo ${index + 1}`;
+            item.appendChild(img);
+            carouselItems.appendChild(item);
+        });
+
+        const items = document.querySelectorAll('.carousel-item');
+
+        function updateCarousel() {
+            items.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                }
+            });
+            photoCounter.textContent = `Photo ${currentIndex + 1} of ${items.length}`;
+        }
+
+        function rotateCarousel(direction) {
+            if (direction === 'next') {
+                currentIndex = (currentIndex + 1) % items.length;
+            } else {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+            }
+            updateCarousel();
+        }
+
+        // Initialize carousel
+        updateCarousel();
+    </script>
+</body>
+</html> 

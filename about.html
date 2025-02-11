@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Searching 4 Stars - Alternative Rock Band from Houston, TX">
+    <meta property="og:title" content="About - Searching 4 Stars">
+    <meta property="og:description" content="Learn more about Searching 4 Stars and the band members">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://searching4stars.com/about">
+    <title>About - Searching 4 Stars</title>
+    <link rel="icon" type="image/gif" href="images/globe.gif">
+    <link rel="alternate icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="loading-screen">
+        <img src="images/globe.gif" alt="Loading..." class="loading-globe">
+    </div>
+    <div class="retro-globe">
+        <img src="images/globe.gif" alt="Retro Globe">
+    </div>
+    <div class="content-wrapper">
+        <nav class="navbar">
+            <button class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://linktr.ee/searching4stars">Music</a></li>
+                <li><a href="tour.html">Tour</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="photos.html">Photos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-container">
+            <img src="images/logo.png" alt="Searching 4 Stars Band Logo" class="logo">
+            
+            <div class="about-section">
+                <div class="about-box">
+                    <h2>About Us</h2>
+                    <div class="about-content">
+                        <p>Searching 4 Stars is a rock band based in Houston, Texas, formed in 2024 by longtime friends and former bandmates Nick and Phillip. The duo previously played together in the band "Bad Luck Prodigy" from 2011-2017, building a strong musical foundation that carries into their current project.</p>
+                        
+                        <p>With a powerful blend of melodic vocals, hard-hitting guitar riffs, and driving bass lines, our debut single "A Little Bit of Love" marks the beginning of this exciting new chapter. Our sound combines years of experience with fresh energy, creating authentic rock music that connects with listeners.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://www.tiktok.com/@searching.4.stars" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/searchingfourstars?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Searchingfourstars" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/artist/2uTEzlGtXNmJvD7lOkIFkM?si=SLpp8UAbQ_O-lmKwOZc-wA" class="social-icon"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </div>
+    <footer class="retro-footer">
+        <p>&copy; 2024 Searching 4 Stars</p>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                This website uses cookies to ensure you get the best experience on our website.
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn" onclick="acceptCookies()">Accept</button>
+                <button class="cookie-btn" onclick="declineCookies()">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+        
+        hamburger.addEventListener('click', function() {
+            navbar.classList.toggle('active');
+            
+            if (navbar.classList.contains('active')) {
+                this.style.border = '2px inset #808080';
+                this.style.backgroundColor = '#a0a0a0';
+            } else {
+                this.style.border = '2px outset #ffffff';
+                this.style.backgroundColor = '#c0c0c0';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!navbar.contains(event.target) && navbar.classList.contains('active')) {
+                navbar.classList.remove('active');
+                hamburger.style.border = '2px outset #ffffff';
+                hamburger.style.backgroundColor = '#c0c0c0';
+            }
+        });
+
+        // Cookie consent functionality
+        function checkCookieConsent() {
+            if (localStorage.getItem('cookieConsent') === null) {
+                document.getElementById('cookieBanner').style.display = 'block';
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').style.display = 'none';
+            // Here you can initialize your analytics or other cookie-dependent features
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookieConsent', 'declined');
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        // Check cookie consent on page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                checkCookieConsent();
+            }, 2000); // Show banner after 2 seconds
+        });
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.querySelector('.loading-screen');
+                loadingScreen.classList.add('fade-out');
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1000); // Shows loading screen for 1.5 seconds
+        });
+    </script>
+</body>
+</html> 
